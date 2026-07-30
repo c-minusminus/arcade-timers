@@ -24,7 +24,7 @@ namespace timer {
         control.runInBackground(then)
     }
 
-    let decounceTimeouts: {[key: string]: number} = {}
+    let debounceTimeouts: {[key: string]: number} = {}
     /**
      * After this block hasn't been called with the given key
      * for a certain amount of time run the attached code.
@@ -36,10 +36,10 @@ namespace timer {
     //% handlerStatement=1
     //% %time=timePicker ms"
     export function debounce(key: string, time: number, thenDo: () => void) {
-        if (decounceTimeouts[key]) {
-            clearTimeout(decounceTimeouts[key])
+        if (debounceTimeouts[key]) {
+            clearTimeout(debounceTimeouts[key])
         }
-        decounceTimeouts[key] = setTimeout(thenDo, time)
+        debounceTimeouts[key] = setTimeout(thenDo, time)
     }
 
     let throttleTimeouts: { [key: string]: number } = {}
